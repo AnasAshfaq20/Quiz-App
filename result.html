@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Result</title>
+    <link rel="stylesheet" href="css/result-page.css" />
+  </head>
+  <body class="result-page">
+    <div class="container">
+      <h1>Your Score</h1>
+      <div id="result">
+        <h2></h2>
+        <img src="" id="result-gif" alt="Result GIF" />
+      </div>
+    </div>
+
+    <script>
+      // Function to get query parameters from the URL
+      function getQueryParams() {
+        const params = {};
+        const queryString = window.location.search.substring(1);
+        const vars = queryString.split("&");
+        for (let i = 0; i < vars.length; i++) {
+          const pair = vars[i].split("=");
+          params[pair[0]] = decodeURIComponent(pair[1]);
+        }
+        return params;
+      }
+
+      // Display the result based on query parameters
+      window.onload = function () {
+        const params = getQueryParams();
+        const score = params["score"];
+        const gifSrc = params["gif"];
+
+        document.querySelector(
+          "#result h2"
+        ).innerText = `Your Score: ${score}%`;
+        document.getElementById("result-gif").src = gifSrc;
+      };
+    </script>
+  </body>
+</html>
