@@ -1,0 +1,40 @@
+/* General Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-image: url("../Asset/image-en.avif");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.container {
+  max-width: 600px;
+  margin: 300px auto;
+  padding: 20px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Start Page Styles */
+.start-page h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.start-button {
+  padding: 10px 20px;
+  font-size: 1.2em;
+  color: #fff;
+  background-color: #28a745;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.start-button:hover {
+  background-color: #218838;
+}
