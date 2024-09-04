@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Page</title>
+    <link rel="stylesheet" href="css/quiz-page.css" />
+  </head>
+  <body class="quiz-page">
+    <div class="container">
+      <h1>Answer the Questions</h1>
+      <form id="quizForm">
+        <div class="question">
+          <label class="ques">Question 1: Is the sky blue?</label><br />
+          <label> <input type="radio" name="q1" value="yes" /> Yes </label
+          ><br />
+          <label> <input type="radio" name="q1" value="no" /> No </label><br />
+        </div>
+
+        <div class="question">
+          <label class="ques">Question 2: Is fire cold?</label><br />
+          <label> <input type="radio" name="q2" value="yes" /> Yes </label
+          ><br />
+          <label> <input type="radio" name="q2" value="no" /> No </label><br />
+        </div>
+
+        <div class="question">
+          <label class="ques">Question 3: Do fish swim?</label><br />
+          <label> <input type="radio" name="q3" value="yes" /> Yes </label
+          ><br />
+          <label> <input type="radio" name="q3" value="no" /> No </label><br />
+        </div>
+
+        <div class="question">
+          <label class="ques">Question 4: Is the earth flat?</label><br />
+          <label> <input type="radio" name="q4" value="yes" /> Yes </label
+          ><br />
+          <label> <input type="radio" name="q4" value="no" /> No </label><br />
+        </div>
+
+        <div class="question">
+          <label class="ques">Question 5: Can birds fly?</label><br />
+          <label> <input type="radio" name="q5" value="yes" /> Yes </label
+          ><br />
+          <label> <input type="radio" name="q5" value="no" /> No </label><br />
+        </div>
+
+        <button type="button" class="submit-button" onclick="calculateScore()">
+          Submit
+        </button>
+      </form>
+
+      <!-- Result Overlay -->
+      <div id="result-overlay" class="result-overlay">
+        <div id="result" class="result"></div>
+      </div>
+    </div>
+
+    <script>
+      function calculateScore() {
+        let score = 0;
+        const correctAnswers = {
+          q1: "yes",
+          q2: "no",
+          q3: "yes",
+          q4: "no",
+          q5: "yes",
+        };
+
+        for (let i = 1; i <= 5; i++) {
+          let answer = document.querySelector(`input[name="q${i}"]:checked`);
+          if (answer && answer.value === correctAnswers[`q${i}`]) {
+            score++;
+          }
+        }
+
+        const percentage = (score / 5) * 100;
+        const resultDiv = document.getElementById("result");
+        const resultOverlay = document.getElementById("result-overlay");
+
+        if (percentage > 50) {
+          resultDiv.innerHTML = `<h2>Your Score: ${percentage}%</h2><img src="/Asset/tree-green.gif" alt="Tree Growing">`;
+        } else {
+          resultDiv.innerHTML = `<h2>Your Score: ${percentage}%</h2><img src="Asset/giphy.gif" alt="Tree Falling">`;
+        }
+
+        resultOverlay.style.display = "flex"; // Show the result overlay
+      }
+    </script>
+  </body>
+</html>
