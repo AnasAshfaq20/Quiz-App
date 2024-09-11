@@ -12,6 +12,10 @@
       <div id="result">
         <h2></h2>
         <img src="" id="result-gif" alt="Result GIF" />
+        <!-- New text added below the GIF -->
+        <p id="result-text">
+          Your efforts are Blooming into something Beautiful
+        </p>
       </div>
     </div>
 
@@ -28,16 +32,26 @@
         return params;
       }
 
-      // Display the result based on query parameters
+      // JavaScript to add the class and trigger the animation
       window.onload = function () {
         const params = getQueryParams();
-        const score = params["score"];
+        const score = parseInt(params["score"], 10); // Convert score to an integer
         const gifSrc = params["gif"];
 
         document.querySelector(
           "#result h2"
         ).innerText = `Your Score: ${score}%`;
         document.getElementById("result-gif").src = gifSrc;
+
+        // Update the result text based on the score
+        const resultText =
+          score > 50
+            ? "Your efforts are Blooming into something Beautiful🙂🙂"
+            : "Your choices are Harmful for the Environment, Choose Wisely😐😐";
+
+        document.getElementById("result-text").innerText = resultText;
+
+        document.querySelector(".container").classList.add("animate-text");
       };
     </script>
   </body>
